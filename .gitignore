@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Env (never commit real keys)
+.env*.local
+.env.local
+
+# Local dev fallback data (submissions stored here only when Supabase is not configured)
+data/*.jsonl
+!data/.gitkeep
+
+# OS / editor
+.DS_Store
+*.pem

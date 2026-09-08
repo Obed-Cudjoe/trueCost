@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* ---------- TrueCost design tokens (Tailwind v4 CSS-first) ---------- */
+@theme {
+  --color-ink: #0c1a2e;
+  --color-ink-soft: #16283f;
+  --color-cream: #faf8f3;
+  --color-gold: #f59e0b;
+  --color-gold-deep: #b45309;
+  --color-leaf: #15803d;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--color-cream); color: #1f2937; font-family: var(--font-body); }
+
+/* Reusable bits */
+.font-display { font-family: var(--font-display); }
+.card-hover { transition: transform .18s ease, box-shadow .18s ease; }
+.card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(12,26,46,.14); }
+.btn-primary { transition: background .15s ease, transform .15s ease; }
+.btn-primary:hover { background: #d97706; transform: translateY(-1px); }
+.link-arrow { transition: gap .15s ease, color .15s ease; }
+.link-arrow:hover { color: var(--color-gold-deep); }
+
+/* Article body typography (CMS HTML) */
+.article-body h2 { font-family: var(--font-display); font-size: 1.5rem; margin: 1.6em 0 .6em; color: var(--color-ink); }
+.article-body h3 { font-size: 1.15rem; margin: 1.4em 0 .5em; color: var(--color-ink); }
+.article-body p { margin: .9em 0; line-height: 1.75; }
+.article-body ul, .article-body ol { margin: .9em 0 .9em 1.4em; line-height: 1.75; }
+.article-body ul { list-style: disc; }
+.article-body ol { list-style: decimal; }
+.article-body blockquote { border-left: 4px solid var(--color-gold); background: #fffbeb; padding: .8em 1.2em; border-radius: 0 .6em .6em 0; margin: 1.2em 0; }
+.article-body table { width: 100%; border-collapse: collapse; margin: 1.2em 0; font-size: .95em; }
+.article-body th { background: var(--color-ink); color: #fbbf24; text-align: left; padding: .6em .8em; }
+.article-body td { border-bottom: 1px solid #e5e7eb; padding: .6em .8em; }

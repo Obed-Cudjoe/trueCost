@@ -1,0 +1,55 @@
+# Decap CMS — edit /content files without touching code.
+# After deploy: create a GitHub OAuth app (free) and set backend below to github.
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "areas"
+    label: "Area Guides"
+    folder: "content/areas"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Area Name", name: "name", widget: "string" }
+      - { label: "Tagline", name: "tagline", widget: "string" }
+      - { label: "Last Verified", name: "lastVerified", widget: "string", default: "Sep 2026" }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - label: "Price Rows"
+        name: "prices"
+        widget: "list"
+        fields:
+          - { label: "Room Type", name: "type", widget: "string" }
+          - { label: "Min (GHS/mo)", name: "min", widget: "number" }
+          - { label: "Max (GHS/mo)", name: "max", widget: "number" }
+          - { label: "Advance Norm", name: "advance", widget: "string" }
+      - label: "Living Realities"
+        name: "realities"
+        widget: "list"
+        fields:
+          - { label: "Icon", name: "icon", widget: "select", options: ["water", "power", "transport", "noise"] }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+      - label: "FAQs"
+        name: "faqs"
+        widget: "list"
+        fields:
+          - { label: "Question", name: "q", widget: "string" }
+          - { label: "Answer", name: "a", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "news"
+    label: "News Posts"
+    folder: "content/news"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Read Time", name: "readTime", widget: "string", default: "4 min read" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
