@@ -13,10 +13,13 @@ export default function CalculatorPage() {
   return (
     <>
       <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "Calculator" }]} />
-      <h1 className="font-display text-4xl text-ink">True move-in cost calculator</h1>
-      <p className="mt-2 max-w-2xl text-slate-600">
-        The monthly rent is never the full story. Add the advance, the agent's 10%, and the hidden fees — computed from verified benchmarks.
-      </p>
+      <div className="dot-grid rounded-3xl bg-ink px-6 py-10 md:px-10">
+        <p className="section-eyebrow text-xs font-bold uppercase text-gold">Advance + agent cut + hidden fees</p>
+        <h1 className="font-display mt-1 text-4xl text-white md:text-5xl">True move-in cost calculator</h1>
+        <p className="mt-2 max-w-2xl text-slate-300">
+          The monthly rent is never the full story. Thirty seconds, zero signup — computed from verified benchmarks.
+        </p>
+      </div>
       <div className="mt-6"><CalculatorWidget areas={getAreas()} /></div>
     </>
   );

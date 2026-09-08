@@ -46,12 +46,17 @@ export default async function AreaDetail({ params }: { params: Promise<{ slug: s
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "Areas", href: "/areas" }, { label: area.name }]} />
-      <h1 className="font-display text-4xl text-ink">Renting in {area.name}</h1>
-      <div className="mt-2 flex flex-wrap items-center gap-3">
-        <VerifiedStamp date={area.lastVerified} />
-        <p className="text-slate-600">{area.tagline}</p>
+      {/* Image hero band */}
+      <div className="hero-img relative overflow-hidden rounded-3xl" style={{ backgroundImage: "url(/images/hero-accra.jpg)" }}>
+        <div className="hero-overlay px-6 py-10 md:px-10 md:py-14">
+          <h1 className="font-display text-4xl text-white md:text-5xl">Renting in {area.name}</h1>
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <VerifiedStamp date={area.lastVerified} />
+            <p className="text-slate-200">{area.tagline}</p>
+          </div>
+          <p className="mt-3 max-w-3xl text-slate-200">{area.summary}</p>
+        </div>
       </div>
-      <p className="mt-3 max-w-3xl text-slate-700">{area.summary}</p>
 
       <section className="mt-8" aria-label="Price benchmarks">
         <h2 className="font-display mb-3 text-2xl text-ink">Price benchmarks</h2>
