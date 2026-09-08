@@ -18,8 +18,8 @@ export default function Footer() {
           </Link>
         </div>
       </div>
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 md:grid-cols-4">
-        <div>
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-12 md:grid-cols-4">
+        <div className="col-span-2 md:col-span-1">
           <Image src="/images/logo-white.png" alt="TrueCost" width={150} height={44} />
           <p className="mt-4 text-sm leading-relaxed">
             Real prices, real living conditions — before agents or landlords quote you.

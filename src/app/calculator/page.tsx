@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   description: "Add the advance, the 10% agent cut, and hidden fees — see what moving in really costs in any Accra area.",
 };
 
-export default function CalculatorPage() {
+export default async function CalculatorPage({ searchParams }: { searchParams: Promise<{ area?: string }> }) {
+  const { area } = await searchParams;
   return (
     <>
       <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "Calculator" }]} />
@@ -20,7 +21,7 @@ export default function CalculatorPage() {
           The monthly rent is never the full story. Thirty seconds, zero signup — computed from verified benchmarks.
         </p>
       </div>
-      <div className="mt-6"><CalculatorWidget areas={getAreas()} /></div>
+      <div className="mt-6"><CalculatorWidget areas={getAreas()} initialArea={area ?? ""} /></div>
     </>
   );
 }

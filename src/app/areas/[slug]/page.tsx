@@ -63,7 +63,7 @@ export default async function AreaDetail({ params }: { params: Promise<{ slug: s
         <BenchmarkTable rows={area.prices} />
       </section>
 
-      <Link href="/calculator" className="mt-6 block rounded-xl bg-ink p-5 text-center font-bold text-gold transition hover:bg-ink-soft">
+      <Link href={`/calculator?area=${area.slug}`} className="mt-6 block rounded-xl bg-ink p-5 text-center font-bold text-gold transition hover:bg-ink-soft">
         🧮 Calculate YOUR move-in cost for {area.name} →
       </Link>
 

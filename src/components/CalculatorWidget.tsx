@@ -6,8 +6,9 @@ import type { Area } from "@/lib/content";
 
 const fmt = (n: number) => "GH₵" + Math.round(n).toLocaleString("en-GH");
 
-export default function CalculatorWidget({ areas }: { areas: Area[] }) {
-  const [areaSlug, setAreaSlug] = useState(areas[0]?.slug ?? "");
+export default function CalculatorWidget({ areas, initialArea = "" }: { areas: Area[]; initialArea?: string }) {
+  const valid = areas.some((a) => a.slug === initialArea) ? initialArea : "";
+  const [areaSlug, setAreaSlug] = useState(valid || areas[0]?.slug || "");
   const [typeIdx, setTypeIdx] = useState(0);
   const [months, setMonths] = useState(12);
   const area = areas.find((a) => a.slug === areaSlug) ?? areas[0];

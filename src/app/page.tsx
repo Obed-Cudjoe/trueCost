@@ -5,7 +5,7 @@ import Image from "next/image";
 import SearchBar from "@/components/SearchBar";
 import AreaCard from "@/components/AreaCard";
 import NewsletterStrip from "@/components/NewsletterStrip";
-import { getAreas, getNews, getRights } from "@/lib/content";
+import { getAreas, getNews, getRights, formatDate } from "@/lib/content";
 
 const SOURCES = ["Jiji listings", "Meqasa", "TikTok rooms", "Agent quotes", "Tenant reports", "Facebook groups"];
 const BUDGETS = [
@@ -152,7 +152,7 @@ export default function Home() {
             <Link key={n.slug} href={`/news/${n.slug}`} className="card-hover block overflow-hidden rounded-2xl border border-slate-200 bg-white">
               <Image src={["/images/area-estate.jpg", "/images/area-compound.jpg", "/images/area-interior.jpg"][i % 3]} alt="" width={600} height={300} className="h-36 w-full object-cover" />
               <span className="block p-5">
-                <span className="text-xs font-bold uppercase tracking-widest text-gold-deep">{n.date} · {n.readTime}</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-gold-deep">{formatDate(n.date)} · {n.readTime}</span>
                 <span className="mt-1 block font-semibold text-ink">{n.title}</span>
                 <span className="line-clamp-2 mt-1 block text-sm text-slate-600">{n.excerpt}</span>
               </span>

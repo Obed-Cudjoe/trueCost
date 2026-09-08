@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import NewsletterStrip from "@/components/NewsletterStrip";
-import { getNews } from "@/lib/content";
+import { getNews, formatDate } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Rent News", description: "Rent news that affects your pocket — enforcement, fees, and market shifts in Accra." };
 
@@ -24,7 +24,7 @@ export default function NewsIndex() {
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         {rest.map((n) => (
           <Link key={n.slug} href={`/news/${n.slug}`} className="card-hover block rounded-xl border border-slate-200 bg-white p-5">
-            <p className="text-xs font-bold uppercase tracking-widest text-gold-deep">{n.date} · {n.readTime}</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-gold-deep">{formatDate(n.date)} · {n.readTime}</p>
             <h2 className="mt-1 font-semibold text-ink">{n.title}</h2>
             <p className="line-clamp-2 mt-1 text-sm text-slate-600">{n.excerpt}</p>
           </Link>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import RelatedCards from "@/components/RelatedCards";
 import NewsletterStrip from "@/components/NewsletterStrip";
-import { getNews, getNewsPost, getAreas } from "@/lib/content";
+import { getNews, getNewsPost, getAreas, formatDate } from "@/lib/content";
 
 export async function generateStaticParams() {
   return getNews().map((n) => ({ slug: n.slug }));
@@ -27,7 +27,7 @@ export default async function NewsArticle({ params }: { params: Promise<{ slug: 
   return (
     <article className="mx-auto max-w-3xl">
       <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "News", href: "/news" }, { label: post.title.slice(0, 32) + "…" }]} />
-      <p className="text-xs font-bold uppercase tracking-widest text-gold-deep">{post.date} · {post.readTime}</p>
+      <p className="text-xs font-bold uppercase tracking-widest text-gold-deep">{formatDate(post.date)} · {post.readTime}</p>
       <h1 className="font-display mt-2 text-4xl text-ink">{post.title}</h1>
       <div className="article-body mt-4" dangerouslySetInnerHTML={{ __html: post.bodyHtml }} />
       <div className="mt-6 flex flex-wrap gap-2">

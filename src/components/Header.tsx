@@ -28,11 +28,11 @@ export default function Header() {
             {LINKS.map((l) => (
               <Link key={l.href} href={l.href} className="group rounded-lg px-3 py-2 transition hover:bg-ink-soft">
                 <span className="text-slate-100 group-hover:text-gold">{l.label}</span>
-                <span className="ml-1.5 hidden text-[11px] text-slate-400 xl:inline">{l.hint}</span>
+                <span className="ml-1.5 hidden text-[11px] text-slate-400 2xl:inline">{l.hint}</span>
               </Link>
             ))}
             <Link href="/search" className="rounded-lg px-3 py-2 text-slate-100 transition hover:bg-ink-soft hover:text-gold" aria-label="Search">⌕</Link>
-            <Link href="/get-help" className="btn-primary ml-2 rounded-lg bg-gold px-4 py-2 font-semibold text-ink">
+            <Link href="/get-help" className="btn-primary ml-2 whitespace-nowrap rounded-lg bg-gold px-4 py-2 font-semibold text-ink">
               Get Matched — Free
             </Link>
           </nav>
