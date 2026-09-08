@@ -18,11 +18,23 @@ export default function Contact() {
           <ContactForm />
         </div>
         <aside className="h-fit rounded-2xl bg-ink p-6 text-white">
-          <h2 className="font-bold text-gold">Prefer WhatsApp?</h2>
+          <h2 className="font-bold text-gold">Reach us directly</h2>
           <p className="mt-1 text-sm text-slate-300">Fastest for corrections and urgent questions.</p>
           <a href={`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent("Hi TrueCost — ")}`} target="_blank" rel="noreferrer"
-            className="mt-4 block rounded-lg bg-[#25D366] px-4 py-3 text-center font-bold text-ink">✆ Chat now</a>
-          <p className="mt-4 text-sm text-slate-300">Spotted a stale price? Choose topic <b>Correction</b> and we'll re-check it.</p>
+            className="mt-4 block rounded-lg bg-[#25D366] px-4 py-3 text-center font-bold text-ink">✆ WhatsApp {SITE.phoneDisplay}</a>
+          <a href={`tel:+${SITE.whatsapp}`}
+            className="btn-ghost mt-2 block rounded-lg border border-slate-500 px-4 py-3 text-center font-bold text-white">☎ Call {SITE.phoneDisplay}</a>
+          {SITE.email && (
+            <a href={`mailto:${SITE.email}`} className="mt-3 flex items-center gap-2 break-all text-sm text-slate-200 hover:text-gold">
+              <span aria-hidden>✉️</span> {SITE.email}
+            </a>
+          )}
+          {SITE.linkedin && (
+            <a href={SITE.linkedin} target="_blank" rel="noreferrer" className="mt-2 flex items-center gap-2 text-sm text-slate-200 hover:text-gold">
+              <span aria-hidden>💼</span> Connect on LinkedIn →
+            </a>
+          )}
+          <p className="mt-4 border-t border-ink-line pt-4 text-sm text-slate-300">Spotted a stale price? Choose topic <b>Correction</b> and we'll re-check it.</p>
           <p className="mt-2 text-sm"><Link href="/rights" className="font-semibold text-gold hover:underline">Tenant rights →</Link></p>
         </aside>
       </div>

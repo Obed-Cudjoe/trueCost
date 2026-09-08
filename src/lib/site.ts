@@ -4,8 +4,11 @@ export const SITE = {
   tagline: "Know the real cost of renting in Accra.",
   description:
     "TrueCost publishes verified rent benchmarks, living realities, and true move-in costs for Accra neighbourhoods — before agents or landlords quote you a price.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://truecost.vercel.app",
-  whatsapp: "233200000000", // TODO: replace with owner's WhatsApp number (country code + number, no +)
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://truecost-rose.vercel.app",
+  whatsapp: "233531262424", // owner's WhatsApp (country code + number, no +)
+  phoneDisplay: "053 126 2424",
+  email: "", // TODO: owner's email — shows on /contact when set
+  linkedin: "", // TODO: owner's LinkedIn URL — shows on /contact when set
   responsePromise: "within 24 hours",
 };
 
