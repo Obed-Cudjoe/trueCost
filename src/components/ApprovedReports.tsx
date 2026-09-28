@@ -19,7 +19,7 @@ export default function ApprovedReports({ areaSlug, areaName }: { areaSlug: stri
   useEffect(() => {
     let cancelled = false;
     setState("loading");
-    fetch(`/api/reports/summary?area=${encodeURIComponent(areaSlug)}`)
+        fetch(`/api/reports/summary/${encodeURIComponent(areaSlug)}`)
       .then((res) => res.json())
       .then((json: { ok?: boolean } & Partial<ApprovedSummary>) => {
         if (cancelled) return;
