@@ -23,7 +23,7 @@ function appendLocal(table: string, row: Record<string, unknown>) {
   fs.appendFileSync(path.join(dir, `${table}.jsonl`), JSON.stringify({ ...row, _at: new Date().toISOString() }) + "\n");
 }
 
-export async function insertRow(table: "leads" | "contact_messages" | "newsletter_subscribers", row: Record<string, unknown>) {
+export async function insertRow(table: "leads" | "contact_messages" | "newsletter_subscribers" | "partners", row: Record<string, unknown>) {
   const sb = supabase();
   if (sb) {
     const { error } = await sb.from(table).insert(row);
@@ -32,4 +32,17 @@ export async function insertRow(table: "leads" | "contact_messages" | "newslette
   }
   appendLocal(table, row); // dev/demo fallback — real storage, local file
   return { stored: "local-dev" as const };
+}
+
+// Read side for the private tracker (/track). Newest first.
+export async function readRows(table: "leads" | "partners", limit = 200): Promise<Record<string, unknown>[]> {
+  const sb = supabase();
+  if (sb) {
+    const { data, error } = await sb.from(table).select("*").order("created_at", { ascending: false }).limit(limit);
+    if (error) throw new Error(`Supabase read failed: ${error.message}`);
+    return (data ?? []) as Record<string, unknown>[];
+  }
+  const file = path.join(process.cwd(), "data", `${table}.jsonl`);
+  if (!fs.existsSync(file)) return [];
+  return fs.readFileSync(file, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l)).reverse().slice(0, limit);
 }
