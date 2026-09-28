@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import VerifiedStamp from "@/components/VerifiedStamp";
+import DataTransparency from "@/components/DataTransparency";
 import FaqAccordion from "@/components/FaqAccordion";
 import RelatedCards from "@/components/RelatedCards";
 import NewsletterStrip from "@/components/NewsletterStrip";
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const g = getGuide(slug);
   if (!g) return {};
-  return { title: `${g.title} in Accra — Prices by Area`, description: g.summary };
+  return { title: `${g.title} in Accra — Prices by Area`, description: `${g.summary} See the source limitations before relying on a range.`, alternates: { canonical: `/guides/${g.slug}` } };
 }
 
 export default async function GuideDetail({ params }: { params: Promise<{ slug: string }> }) {
@@ -31,7 +32,7 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
     <>
       <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "Guides" }, { label: guide.title }]} />
       <h1 className="font-display text-4xl text-ink">{guide.title}</h1>
-      <div className="mt-2"><VerifiedStamp date={guide.lastVerified} /></div>
+      <div className="mt-2"><VerifiedStamp date={guide.lastVerified} provenanceComplete={Boolean(guide.checkedOn && guide.sourceType && typeof guide.sampleSize === "number" && guide.priceBasis && guide.limitations?.length)} /></div>
       <p className="mt-3 max-w-3xl text-slate-700">{guide.summary}</p>
 
       <section className="mt-8 rounded-xl border border-slate-200 bg-white p-6" aria-label="What it means">
@@ -42,9 +43,10 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
       </section>
 
       <section className="mt-8" aria-label="Prices by area">
-        <h2 className="font-display mb-3 text-2xl text-ink">Prices by area</h2>
+        <h2 className="font-display mb-3 text-2xl text-ink">Recorded ranges by area</h2>
         <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
           <table className="w-full min-w-[420px] text-left text-sm">
+            <caption className="sr-only">Monthly range by area in Ghana cedis</caption>
             <thead><tr className="bg-ink text-gold"><th className="px-4 py-3">Area</th><th className="px-4 py-3">Monthly range</th></tr></thead>
             <tbody>
               {guide.priceByArea.map((r) => (
@@ -56,10 +58,11 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
             </tbody>
           </table>
         </div>
+        <DataTransparency data={guide} label="property-type benchmark" />
       </section>
 
       <div className="mt-6 rounded-xl border-l-4 border-gold-deep bg-amber-50 p-5" role="note">
-        <p className="font-bold text-ink">⚠️ Advance warning</p>
+        <p className="font-bold text-ink">⚠️ Advance note</p>
         <p className="mt-1 text-sm text-slate-700">{guide.warning}</p>
       </div>
 
@@ -71,7 +74,7 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
       </section>
 
       <Link href="/calculator" className="mt-8 block rounded-xl bg-ink p-5 text-center font-bold text-gold transition hover:bg-ink-soft">
-        🧮 Calculate your true move-in cost →
+        🧮 Plan your move-in cost →
       </Link>
 
       <RelatedCards items={related} heading="Compare areas" />

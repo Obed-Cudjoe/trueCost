@@ -1,4 +1,4 @@
-"use client"; // P5 — signature tool: true move-in cost = advance + 10% commission + fees. 100% client-side.
+"use client"; // P5 — client-side planning estimate with visible assumptions.
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { FEE_DEFAULTS } from "@/lib/site";
@@ -48,27 +48,27 @@ export default function CalculatorWidget({ areas, initialArea = "" }: { areas: A
         <input id="calc-months" type="range" min={1} max={36} value={months}
           onChange={(e) => setMonths(Number(e.target.value))} className="w-full accent-amber-600" />
         <p className="mt-4 text-xs text-slate-500">
-          Assumes 10% commission + ~GH₵{FEE_DEFAULTS.viewingFee} viewing + ~GH₵{FEE_DEFAULTS.movingFee} moving. Mid-range of verified benchmarks.
+          Planning assumptions: {FEE_DEFAULTS.commissionRate * 100}% commission + GH₵{FEE_DEFAULTS.viewingFee} viewing + GH₵{FEE_DEFAULTS.movingFee} moving. The benchmark midpoint is not a quote; confirm every fee directly.
         </p>
       </div>
       <div className="rounded-2xl bg-ink p-6 text-white">
-        <p className="text-sm uppercase tracking-widest text-gold">Your true move-in cost</p>
+        <p className="text-sm uppercase tracking-widest text-gold">Planning estimate</p>
         <p className="font-display my-2 text-5xl">{fmt(math.total)}</p>
         <ul className="mt-4 space-y-1 text-sm text-slate-300">
-          <li>{months} months × {fmt(math.mid)} = <b className="text-white">{fmt(math.advance)}</b></li>
-          <li>Agent 10% = <b className="text-white">{fmt(math.commission)}</b></li>
-          <li>Viewing + moving ≈ <b className="text-white">{fmt(FEE_DEFAULTS.viewingFee + FEE_DEFAULTS.movingFee)}</b></li>
+          <li>{months} months × {fmt(math.mid)} midpoint = <b className="text-white">{fmt(math.advance)}</b></li>
+          <li>Planning commission assumption = <b className="text-white">{fmt(math.commission)}</b></li>
+          <li>Planning viewing + moving assumptions = <b className="text-white">{fmt(FEE_DEFAULTS.viewingFee + FEE_DEFAULTS.movingFee)}</b></li>
         </ul>
         <div className="mt-6 flex flex-col gap-2">
           {shocking ? (
             <>
-              <p className="text-sm text-slate-300">Ouch? That number is exactly why this site exists.</p>
-              <Link href="/rights" className="rounded-lg bg-white px-4 py-2.5 text-center font-semibold text-ink hover:bg-slate-100">Know your rights →</Link>
-              <Link href="/get-help" className="rounded-lg bg-gold px-4 py-2.5 text-center font-bold text-ink hover:bg-amber-500">Get matched anyway →</Link>
+              <p className="text-sm text-slate-300">Use this only as a planning conversation starter, then confirm the property and fees.</p>
+              <Link href="/rights" className="rounded-lg bg-white px-4 py-2.5 text-center font-semibold text-ink hover:bg-slate-100">Read tenant information →</Link>
+              <Link href="/get-help" className="rounded-lg bg-gold px-4 py-2.5 text-center font-bold text-ink hover:bg-amber-500">Request help →</Link>
             </>
           ) : (
             <Link href={`/get-help?area=${area.slug}`} className="btn-primary rounded-lg bg-gold px-4 py-2.5 text-center font-bold text-ink">
-              Get matched in {area.name} →
+              Request help in {area.name} →
             </Link>
           )}
         </div>

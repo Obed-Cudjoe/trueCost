@@ -7,28 +7,47 @@ import { marked } from "marked";
 
 const CONTENT = path.join(process.cwd(), "content");
 
+export const DATA_FRESHNESS_DAYS = 90;
+
+export type ReviewStatus = "documented" | "owner-review";
+export type PriceBasis = "asking" | "paid" | "mixed" | "unknown";
+
+export interface SourceReference { label: string; url: string }
+export interface Provenance {
+  lastVerified?: string;
+  checkedOn?: string;
+  sourceType?: string;
+  sampleSize?: number;
+  priceBasis?: PriceBasis;
+  limitations?: string[];
+  reviewStatus?: ReviewStatus;
+  reviewNote?: string;
+  sources?: SourceReference[];
+  updated?: string;
+}
+
 export interface PriceRow { type: string; min: number; max: number; advance: string }
 export interface Reality { icon: "water" | "power" | "transport" | "noise"; title: string; text: string }
 export interface Faq { q: string; a: string }
 
-export interface Area {
+export interface Area extends Provenance {
   slug: string; name: string; tagline: string; lastVerified: string;
   summary: string; prices: PriceRow[]; realities: Reality[]; faqs: Faq[]; bodyHtml: string;
 }
-export interface Guide {
+export interface Guide extends Provenance {
   slug: string; title: string; lastVerified: string; summary: string;
   layout: string[]; priceByArea: { area: string; range: string }[];
   warning: string; faqs: Faq[]; bodyHtml: string;
 }
-export interface RightsArticle {
+export interface RightsArticle extends Provenance {
   slug: string; title: string; summary: string; lawBox: string;
   steps: string[]; faqs: Faq[]; bodyHtml: string;
 }
-export interface NewsPost {
+export interface NewsPost extends Provenance {
   slug: string; title: string; date: string; readTime: string;
   excerpt: string; tags: string[]; featured?: boolean; bodyHtml: string;
 }
-export interface LegalDoc { slug: string; title: string; updated: string; bodyHtml: string }
+export interface LegalDoc extends Provenance { slug: string; title: string; updated: string; bodyHtml: string }
 
 function readCollection<T>(dir: string): (T & { slug: string; bodyHtml: string })[] {
   const full = path.join(CONTENT, dir);
@@ -77,4 +96,34 @@ export function formatDate(iso: string): string {
   if (!m) return iso;
   const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   return `${months[Number(m[2]) - 1]} ${Number(m[3])}, ${m[1]}`;
+}
+
+export function isMonthOnlyDate(value?: string): boolean {
+  return Boolean(value && /^[A-Za-z]{3,9}\s+\d{4}$/.test(value.trim()));
+}
+
+/**
+ * Parse an exact ISO date, or use the end of a month when the source only stores
+ * "Sep 2026". Using the end of the month avoids declaring a current-month record
+ * stale before the month has finished; the UI says explicitly when the day is absent.
+ */
+export function parseCheckedDate(value?: string): Date | null {
+  if (!value) return null;
+  const exact = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value.trim());
+  if (exact) return new Date(Date.UTC(Number(exact[1]), Number(exact[2]) - 1, Number(exact[3])));
+  const month = /^([A-Za-z]{3,9})\s+(\d{4})$/.exec(value.trim());
+  if (!month) return null;
+  const index = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"].indexOf(month[1].slice(0, 3).toLowerCase());
+  if (index < 0) return null;
+  return new Date(Date.UTC(Number(month[2]), index + 1, 0));
+}
+
+export function isStale(value?: string, now = new Date()): boolean | null {
+  const checked = parseCheckedDate(value);
+  if (!checked) return null;
+  return now.getTime() - checked.getTime() > DATA_FRESHNESS_DAYS * 24 * 60 * 60 * 1000;
+}
+
+export function hasCompleteBenchmarkProvenance(item: Provenance): boolean {
+  return Boolean(item.checkedOn && item.sourceType && typeof item.sampleSize === "number" && item.priceBasis && item.limitations?.length);
 }

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import SourceNote from "@/components/SourceNote";
 import RelatedCards from "@/components/RelatedCards";
 import NewsletterStrip from "@/components/NewsletterStrip";
 import { getNews, getNewsPost, getAreas, formatDate } from "@/lib/content";
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const n = getNewsPost(slug);
   if (!n) return {};
-  return { title: n.title, description: n.excerpt };
+  return { title: n.title, description: n.excerpt, alternates: { canonical: `/news/${n.slug}` } };
 }
 
 export default async function NewsArticle({ params }: { params: Promise<{ slug: string }> }) {
@@ -29,6 +30,7 @@ export default async function NewsArticle({ params }: { params: Promise<{ slug: 
       <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "News", href: "/news" }, { label: post.title.slice(0, 32) + "…" }]} />
       <p className="text-xs font-bold uppercase tracking-widest text-gold-deep">{formatDate(post.date)} · {post.readTime}</p>
       <h1 className="font-display mt-2 text-4xl text-ink">{post.title}</h1>
+      <SourceNote data={post} label="Article source status" />
       <div className="article-body mt-4" dangerouslySetInnerHTML={{ __html: post.bodyHtml }} />
       <div className="mt-6 flex flex-wrap gap-2">
         {post.tags.map((t) => <span key={t} className="rounded-full bg-cream px-3 py-1 text-xs font-bold text-gold-deep">#{t}</span>)}

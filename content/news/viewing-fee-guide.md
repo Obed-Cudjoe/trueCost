@@ -1,25 +1,21 @@
 ---
-title: "Viewing fees: what Accra agents charge in 2026 (and what's actually fair)"
+title: "Viewing fees: questions to ask before you pay"
 date: "2026-08-15"
+updated: "2026-09-26"
 readTime: "5 min read"
-excerpt: "GH₵50–200 per agent, non-refundable, before you've seen a thing. How the fee works and how to stop it bleeding you dry."
+excerpt: "The repository does not contain a source-backed market range for viewing fees. Use this checklist to clarify the address, amount, and receipt before paying."
 tags: ["agents", "fees", "house-hunting"]
+reviewStatus: "owner-review"
+reviewNote: "The previous fee ranges were not accompanied by a source log or sample size. They have been removed until the owner documents the evidence."
 ---
 
-Viewing fees are Accra's most-hated rental ritual: pay GH₵50–200 per agent just to be shown a room — refundable never, receipt rare.
+The repository does not currently have a source-backed sample for a market-wide viewing-fee range. Do not read an old number from this page as a typical or fair price.
 
-## The going rates
+## Questions to ask
 
-| Situation | Typical fee |
-|---|---|
-| Single room viewing (outer areas) | GH₵50–100 |
-| Apartment viewing (central Accra) | GH₵100–200 |
-| "Fuel money" add-ons | GH₵50–100 extra |
+1. **What exact service is the fee for?** Ask for the address or viewing details before paying.
+2. **Is it refundable or credited?** Get the answer in writing; do not assume.
+3. **Who receives it?** Keep the person&apos;s name and a receipt or MoMo reference.
+4. **What happens if the property is unavailable or materially different?** Agree the next step before payment.
 
-## Three rules that save you thousands
-
-1. **No address, no fee.** Refuse payment until a verifiable address is shared.
-2. **One agent per area.** Overlapping agents multiply fees for the same rooms.
-3. **Receipt or MoMo.** Every fee paid is a fee logged.
-
-> Run any quote through our calculator first — fees stack faster than you think.
+> TrueCost does not set a provider&apos;s fee. Confirm the amount, property, and terms directly and keep the record.

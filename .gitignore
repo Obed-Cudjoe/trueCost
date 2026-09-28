@@ -13,6 +13,9 @@ out/
 data/*.jsonl
 !data/.gitkeep
 
+# TypeScript incremental metadata
+*.tsbuildinfo
+
 # OS / editor
 .DS_Store
 *.pem

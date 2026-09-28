@@ -8,12 +8,12 @@ export default function SearchBar({ large = false }: { large?: boolean }) {
   return (
     <form
       role="search"
-      onSubmit={(e) => { e.preventDefault(); if (q.trim()) router.push(`/search?q=${encodeURIComponent(q.trim())}`); }}
+      onSubmit={(e) => { e.preventDefault(); if (q.trim()) router.push(`/search?q=${encodeURIComponent(q.trim().slice(0, 120))}`); }}
       className={`flex w-full gap-2 ${large ? "max-w-xl" : "max-w-md"}`}
     >
       <label htmlFor="site-search" className="sr-only">Search areas and guides</label>
       <input
-        id="site-search" value={q} onChange={(e) => setQ(e.target.value)}
+        id="site-search" maxLength={120} value={q} onChange={(e) => setQ(e.target.value.slice(0, 120))}
         placeholder='Try "Spintex", "Kasoa", "advance"…'
         className="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-3 text-ink placeholder:text-slate-400 focus:border-gold-deep focus:outline-none"
       />

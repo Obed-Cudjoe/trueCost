@@ -5,7 +5,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import NewsletterStrip from "@/components/NewsletterStrip";
 import { getNews, formatDate } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Rent News", description: "Rent news that affects your pocket — enforcement, fees, and market shifts in Accra." };
+export const metadata: Metadata = { title: "Rent News", description: "Rent information and editorial notes that affect Accra renters, with source status shown on each article.", alternates: { canonical: "/news" } };
 
 export default function NewsIndex() {
   const posts = getNews();
@@ -13,10 +13,10 @@ export default function NewsIndex() {
   return (
     <>
       <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "News" }]} />
-      <h1 className="font-display text-4xl text-ink">Rent news that affects your pocket.</h1>
+      <h1 className="font-display text-4xl text-ink">Rent information that affects your pocket.</h1>
       {featured && (
         <Link href={`/news/${featured.slug}`} className="card-hover mt-6 block rounded-2xl bg-ink p-8 text-white">
-          <p className="text-xs font-bold uppercase tracking-widest text-gold">Featured · {featured.date} · {featured.readTime}</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-gold">Featured · {formatDate(featured.date)} · {featured.readTime}</p>
           <h2 className="font-display mt-2 text-3xl">{featured.title}</h2>
           <p className="mt-2 text-slate-300">{featured.excerpt}</p>
         </Link>

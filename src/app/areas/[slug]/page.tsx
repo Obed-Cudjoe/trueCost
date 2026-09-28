@@ -5,11 +5,14 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BenchmarkTable from "@/components/BenchmarkTable";
 import VerifiedStamp from "@/components/VerifiedStamp";
+import DataTransparency from "@/components/DataTransparency";
 import FaqAccordion from "@/components/FaqAccordion";
 import RelatedCards from "@/components/RelatedCards";
 import NewsletterStrip from "@/components/NewsletterStrip";
 import LeadForm from "@/components/LeadForm";
+import FeaturedAgents from "@/components/FeaturedAgents";
 import { getAreas, getArea, getGuides } from "@/lib/content";
+import { canonicalUrl } from "@/lib/site";
 
 export async function generateStaticParams() {
   return getAreas().map((a) => ({ slug: a.slug }));
@@ -20,8 +23,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const a = getArea(slug);
   if (!a) return {};
   return {
-    title: `Renting in ${a.name}: 2026 True-Cost Breakdown`,
-    description: `${a.summary} Verified ${a.lastVerified}.`,
+    title: `Renting in ${a.name}: 2026 planning guide`,
+    description: `${a.summary} See the recorded date, price basis, and data limits before relying on the range.`,
+    alternates: { canonical: `/areas/${a.slug}` },
   };
 }
 
@@ -38,20 +42,21 @@ export default async function AreaDetail({ params }: { params: Promise<{ slug: s
     ...guides.slice(0, 1).map((g) => ({ title: g.title, excerpt: g.summary, url: `/guides/${g.slug}` })),
   ];
   const faqJsonLd = {
-    "@context": "https://schema.org", "@type": "FAQPage",
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "url": canonicalUrl(`/areas/${area.slug}`),
     mainEntity: area.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
   };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      {area.faqs.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
       <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "Areas", href: "/areas" }, { label: area.name }]} />
-      {/* Image hero band */}
       <div className="hero-img relative overflow-hidden rounded-3xl" style={{ backgroundImage: "url(/images/hero-accra.jpg)" }}>
         <div className="hero-overlay px-6 py-10 md:px-10 md:py-14">
           <h1 className="font-display text-4xl text-white md:text-5xl">Renting in {area.name}</h1>
           <div className="mt-3 flex flex-wrap items-center gap-3">
-            <VerifiedStamp date={area.lastVerified} />
+            <VerifiedStamp date={area.lastVerified} provenanceComplete={Boolean(area.checkedOn && area.sourceType && typeof area.sampleSize === "number" && area.priceBasis && area.limitations?.length)} />
             <p className="text-slate-200">{area.tagline}</p>
           </div>
           <p className="mt-3 max-w-3xl text-slate-200">{area.summary}</p>
@@ -59,12 +64,13 @@ export default async function AreaDetail({ params }: { params: Promise<{ slug: s
       </div>
 
       <section className="mt-8" aria-label="Price benchmarks">
-        <h2 className="font-display mb-3 text-2xl text-ink">Price benchmarks</h2>
+        <h2 className="font-display mb-3 text-2xl text-ink">Recorded price ranges</h2>
         <BenchmarkTable rows={area.prices} />
+        <DataTransparency data={area} label="area benchmark" />
       </section>
 
       <Link href={`/calculator?area=${area.slug}`} className="mt-6 block rounded-xl bg-ink p-5 text-center font-bold text-gold transition hover:bg-ink-soft">
-        🧮 Calculate YOUR move-in cost for {area.name} →
+        🧮 Plan move-in costs for {area.name} →
       </Link>
 
       <section className="mt-8" aria-label="Living realities">
@@ -86,12 +92,13 @@ export default async function AreaDetail({ params }: { params: Promise<{ slug: s
         <FaqAccordion faqs={area.faqs} />
       </section>
 
-      <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6" aria-label="Get matched">
-        <h2 className="font-display text-2xl text-ink">Want a verified option in {area.name}?</h2>
-        <p className="mb-4 text-sm text-slate-600">No viewing fees through us. A human replies within 24 hours.</p>
+      <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6" aria-label="Get help">
+        <h2 className="font-display text-2xl text-ink">Need help comparing an option in {area.name}?</h2>
+        <p className="mb-4 text-sm text-slate-600">Send your area and budget for owner review. A property, partner, fee outcome, or response time is not guaranteed.</p>
         <LeadForm areas={areas.map((a) => ({ slug: a.slug, name: a.name }))} defaultArea={area.slug} compact />
       </section>
 
+      <FeaturedAgents areaSlug={area.slug} areaName={area.name} />
       <RelatedCards items={related} />
       <NewsletterStrip />
     </>

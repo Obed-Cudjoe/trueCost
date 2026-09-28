@@ -7,11 +7,12 @@ export default function BenchmarkTable({ rows }: { rows: PriceRow[] }) {
   return (
     <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
       <table className="w-full min-w-[520px] text-left text-sm">
+        <caption className="sr-only">Monthly benchmark ranges in Ghana cedis</caption>
         <thead>
           <tr className="bg-ink text-gold">
             <th className="px-4 py-3">Room type</th>
-            <th className="px-4 py-3">Monthly range</th>
-            <th className="px-4 py-3">Advance norm</th>
+            <th className="px-4 py-3">Recorded monthly range</th>
+            <th className="px-4 py-3">Advance noted in dataset</th>
           </tr>
         </thead>
         <tbody>
