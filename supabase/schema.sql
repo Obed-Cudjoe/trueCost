@@ -50,3 +50,22 @@ create table if not exists partners (
   status text default 'new'
 );
 alter table partners enable row level security;
+
+-- Renter-reported price observations. Never published directly: rows stay
+-- "pending" until the owner reviews them behind the tracker key.
+create table if not exists price_reports (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz default now(),
+  area_slug text not null,
+  room_type text not null,
+  observed_rent numeric not null,
+  observed_on date not null,
+  basis text not null default 'unknown',      -- asking | paid | unknown
+  source_context text,                        -- how the figure was seen (optional)
+  contact text,                               -- optional, private, never returned publicly
+  source_page text,
+  status text default 'pending',              -- pending | approved | rejected | needs_clarification
+  review_note text,
+  reviewed_at timestamptz
+);
+alter table price_reports enable row level security;

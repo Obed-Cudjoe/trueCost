@@ -2,11 +2,13 @@
   "name": "truecost",
   "version": "1.0.0",
   "private": true,
-  "description": "TrueCost Area Guides — honest Accra rent benchmarks, cost calculator, and lead capture.",
+  "description": "TrueCost Area Guides \u2014 honest Accra rent benchmarks, cost calculator, and lead capture.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc -p tsconfig.test.json && node --test .test-build/tests"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",

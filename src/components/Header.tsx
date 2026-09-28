@@ -7,6 +7,7 @@ const LINKS = [
   { href: "/areas", label: "Areas", hint: "Benchmarks" },
   { href: "/guides/single-room-self-contain", label: "Guides", hint: "Room types" },
   { href: "/calculator", label: "Calculator", hint: "Planning math" },
+  { href: "/compare", label: "Compare", hint: "Side by side" },
   { href: "/rights", label: "Rights", hint: "Source status" },
   { href: "/news", label: "News", hint: "Rent information" },
 ];

@@ -19,3 +19,6 @@ data/*.jsonl
 # OS / editor
 .DS_Store
 *.pem
+
+# Compiled test output (node --test runs the JS build)
+.test-build/

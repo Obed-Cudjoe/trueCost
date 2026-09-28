@@ -11,6 +11,7 @@ import RelatedCards from "@/components/RelatedCards";
 import NewsletterStrip from "@/components/NewsletterStrip";
 import LeadForm from "@/components/LeadForm";
 import FeaturedAgents from "@/components/FeaturedAgents";
+import ApprovedReports from "@/components/ApprovedReports";
 import { getAreas, getArea, getGuides } from "@/lib/content";
 import { canonicalUrl } from "@/lib/site";
 
@@ -69,9 +70,27 @@ export default async function AreaDetail({ params }: { params: Promise<{ slug: s
         <DataTransparency data={area} label="area benchmark" />
       </section>
 
-      <Link href={`/calculator?area=${area.slug}`} className="mt-6 block rounded-xl bg-ink p-5 text-center font-bold text-gold transition hover:bg-ink-soft">
-        🧮 Plan move-in costs for {area.name} →
-      </Link>
+      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <Link href={`/calculator?area=${area.slug}`} className="block rounded-xl bg-ink p-5 text-center font-bold text-gold transition hover:bg-ink-soft">
+          🧮 Plan move-in costs for {area.name} →
+        </Link>
+        <Link href={`/compare?mode=areas&a=${area.slug}`} className="block rounded-xl border-2 border-ink p-5 text-center font-bold text-ink transition hover:bg-white">
+          ⚖️ Compare {area.name} with another area →
+        </Link>
+      </div>
+
+      <section className="mt-8" aria-label="Compare room types in this area">
+        <h2 className="font-display mb-3 text-2xl text-ink">Comparing room types inside {area.name}</h2>
+        <p className="mb-3 max-w-3xl text-sm text-slate-600">
+          Line up the room types recorded here side by side, or compare {area.name} with up to two other areas. Only fields that are actually
+          recorded are shown.
+        </p>
+        <Link href={`/compare?mode=rooms&area=${area.slug}`} className="inline-block rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold">
+          Compare room types in {area.name} →
+        </Link>
+      </section>
+
+      <ApprovedReports areaSlug={area.slug} areaName={area.name} />
 
       <section className="mt-8" aria-label="Living realities">
         <h2 className="font-display mb-3 text-2xl text-ink">Living realities</h2>

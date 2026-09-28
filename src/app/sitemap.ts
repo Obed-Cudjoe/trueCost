@@ -20,6 +20,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/" },
     { path: "/areas" },
     { path: "/calculator" },
+    { path: "/compare" },
+    { path: "/report" },
     { path: "/news" },
     { path: "/rights" },
     { path: "/about" },
