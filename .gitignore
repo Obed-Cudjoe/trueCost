@@ -6,8 +6,10 @@ node_modules/
 out/
 
 # Env (never commit real keys)
+.env
 .env*.local
 .env.local
+!.env.example
 
 # Local dev fallback data (submissions stored here only when Supabase is not configured)
 data/*.jsonl
