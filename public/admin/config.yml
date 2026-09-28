@@ -16,7 +16,13 @@ collections:
     fields:
       - { label: "Area Name", name: "name", widget: "string" }
       - { label: "Tagline", name: "tagline", widget: "string" }
-      - { label: "Last Verified", name: "lastVerified", widget: "string", default: "Sep 2026" }
+      - { label: "Last checked (month or ISO date)", name: "lastVerified", widget: "string", default: "Sep 2026" }
+      - { label: "Exact check date (optional)", name: "checkedOn", widget: "string", required: false }
+      - { label: "Source type (optional)", name: "sourceType", widget: "string", required: false }
+      - { label: "Sample size (optional)", name: "sampleSize", widget: "number", required: false }
+      - { label: "Price basis", name: "priceBasis", widget: "select", options: ["asking", "paid", "mixed", "unknown"], default: "unknown" }
+      - { label: "Limitations", name: "limitations", widget: "list", required: false }
+      - { label: "Content update date (ISO, optional)", name: "updated", widget: "string", required: false }
       - { label: "Summary", name: "summary", widget: "text" }
       - label: "Price Rows"
         name: "prices"
@@ -47,7 +53,11 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Publication date", name: "date", widget: "datetime" }
+      - { label: "Content update date (ISO)", name: "updated", widget: "string", required: false }
+      - { label: "Check date (optional)", name: "checkedOn", widget: "string", required: false }
+      - { label: "Review status", name: "reviewStatus", widget: "select", options: ["documented", "owner-review"], default: "owner-review" }
+      - { label: "Review note", name: "reviewNote", widget: "text", required: false }
       - { label: "Read Time", name: "readTime", widget: "string", default: "4 min read" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
       - { label: "Tags", name: "tags", widget: "list" }

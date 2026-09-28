@@ -1,18 +1,21 @@
 ---
-title: "December surge: why short-let prices explode (and how to beat them)"
+title: "Short-let checks before you pay in a high-demand period"
 date: "2026-09-01"
+updated: "2026-09-26"
 readTime: "4 min read"
-excerpt: "Detty December doubles lodging demand. Book early, fix cedi prices in writing, and never pay deposits over DMs alone."
-tags: ["short-let", "december", "diaspora"]
+excerpt: "A practical checklist for short-let enquiries: confirm the unit, fix the cedi amount in writing, and keep a traceable payment record."
+tags: ["short-let", "december", "tenant-safety"]
+reviewStatus: "owner-review"
+reviewNote: "The repository does not contain a source log for market-wide seasonal-demand or price-change claims. This article keeps only general verification steps."
 ---
 
-Every December, diaspora arrivals flood Accra and short-let prices soar — then the complaints flood in: switched units, vanished deposits, dollar-quote drift.
+Short-let arrangements can change quickly. This checklist is practical rather than a market survey, and it does not establish what any provider normally charges.
 
-## How to beat the surge
+## Before you pay
 
-- **Book 6–8 weeks out.** Late-November bookers pay the desperation premium.
-- **Fix cedi figures in writing.** Dollar quotes drift with the rate; pin the cedi number and date.
-- **Video-verify.** A live walkthrough beats 20 photos — demand one before any deposit.
-- **Pay traceably.** MoMo or transfer, never cash to a "caretaker."
+- Ask for the exact address and a live walkthrough where possible.
+- Fix the cedi amount, dates, cancellation terms, and what is included in writing.
+- Keep the provider&apos;s name, messages, and payment reference.
+- Compare the total against a longer-term option in the area instead of relying on a headline daily price.
 
-> Visiting longer than a month? Compare short-let totals against yearly rents in our area guides first.
+> Do not send a deposit to an unverified contact based only on photos or a direct message. Confirm the provider and the property independently.

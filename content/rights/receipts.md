@@ -1,17 +1,20 @@
 ---
-title: "You are entitled to receipts for every payment"
-summary: "Every cedi — rent, fees, deposits — must be receipted. No receipt, no proof; no proof, no case."
-lawBox: "Landlords must issue receipts for rent paid. Receipts (or MoMo records) are the foundation of any Rent Control complaint or court filing."
+title: "Payment records: build your paper trail"
+summary: "Practical ways to preserve rent, deposit, fee, and message records — with the legal entitlement claim marked for review."
+lawBox: "Owner review required: the repository does not yet contain a checked primary source for the broad claim that every rent, fee, or deposit must be receipted in every tenancy. Keep proof of payment while that claim is reviewed."
+reviewStatus: "owner-review"
+updated: "2026-09-26"
+reviewNote: "The evidence advice is practical, but the former universal receipt claim needs a checked primary source and owner/legal review."
 steps:
-  - "Pay by MoMo or bank transfer wherever possible — the record is automatic."
-  - "For cash, demand a written receipt on the spot: amount, date, period covered, signature."
-  - "Photograph every receipt the same day; store in one folder."
-  - "Log agent fees separately — they matter in disputes too."
+  - "Pay by MoMo or bank transfer where practical so the transaction record is preserved."
+  - "For cash, ask for a written receipt showing the amount, date, period, and payer/payee details."
+  - "Photograph or scan every receipt the same day and keep a backup."
+  - "Keep agent fees, deposits, and rent in separate entries so the amounts are clear."
 faqs:
-  - { q: "Landlord refuses receipts?", a: "Switch to MoMo immediately so the trail builds itself, and note the refusal in writing." }
-  - { q: "Do WhatsApp promises count?", a: "Yes — courts accept message threads. Keep them unedited and backed up." }
+  - { q: "What if a landlord refuses a receipt?", a: "Record the request in writing and use a traceable payment method if possible. This page does not promise how a Rent Control office or court will assess the evidence." }
+  - { q: "Do WhatsApp messages count?", a: "Keep the original thread, but ask a qualified adviser how it may be treated in your particular dispute." }
 ---
 
-Receipts are boring until they're everything. A tenant with records beats a landlord with stories.
+A clear timeline of demands, payments, and responses can help a professional understand a dispute. It does not by itself prove that a particular legal remedy is available.
 
-> General guidance, not legal advice. For live disputes, consult a Ghana Bar Association lawyer.
+> General information, not legal advice. Owner/legal review is required.

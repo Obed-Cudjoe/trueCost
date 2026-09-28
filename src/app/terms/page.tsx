@@ -2,9 +2,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { getLegal } from "@/lib/content";
+import { formatDate, getLegal } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Terms of Use", description: "TrueCost terms of use in plain words." };
+export const metadata: Metadata = { title: "Terms of Use", description: "TrueCost terms of use in plain words.", alternates: { canonical: "/terms" } };
 
 export default function Terms() {
   const doc = getLegal("terms");

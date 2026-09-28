@@ -1,17 +1,20 @@
 ---
-title: "Structural repairs are the landlord's duty"
-summary: "Roofs, plumbing, wiring, and shared systems sit with the owner — not the tenant — unless your agreement says otherwise."
-lawBox: "Landlords are responsible for keeping the premises in repair. Tenants may seek Rent Control orders compelling repairs, and in some cases recover costs."
+title: "Repairs: document the problem before you act"
+summary: "A practical record-keeping checklist for roofs, plumbing, wiring, and shared systems — with the legal duty claim marked for review."
+lawBox: "Owner review required: the repository does not yet contain a checked primary source for the broad repair-duty and cost-recovery claims previously made here. Do not deduct costs or stop paying based on this page."
+reviewStatus: "owner-review"
+updated: "2026-09-26"
+reviewNote: "The evidence advice is practical, but the former landlord-duty and reimbursement claims need a checked source and owner/legal review."
 steps:
-  - "Report faults in writing with dated photos; keep copies."
-  - "Set a reasonable deadline for the fix in the same message."
-  - "If ignored, file at Rent Control with your evidence pack."
-  - "Never deduct repair costs from rent without legal advice."
+  - "Report the fault in writing with dated photos or video and keep a copy."
+  - "Describe the safety or habitability impact and ask when an inspection can happen."
+  - "Keep quotes, receipts, and messages if you pay for an emergency intervention."
+  - "Do not deduct repair costs from rent or withhold rent without qualified legal advice."
 faqs:
-  - { q: "I fixed it myself — refund?", a: "Only reliably with prior written agreement. Get the 'fix and deduct' promise in writing first." }
-  - { q: "What counts as structural?", a: "Roof, walls, plumbing, wiring, gates, boreholes — the building's systems, not your furniture." }
+  - { q: "I fixed it myself — can I recover the cost?", a: "Do not assume recovery. Keep the prior request, consent, invoices, and payment record, then ask a qualified adviser." }
+  - { q: "What counts as structural?", a: "Roof, walls, plumbing, wiring, gates, and boreholes may involve different agreement and safety questions. This page does not decide responsibility." }
 ---
 
-Report early, report in writing, photograph everything. The tenant with a dated photo trail wins the repair argument.
+Report early, report in writing, and photograph the condition. The record helps a professional understand the disagreement; it is not a legal order.
 
-> General guidance, not legal advice. For live disputes, consult a Ghana Bar Association lawyer.
+> General information, not legal advice. Owner/legal review is required.

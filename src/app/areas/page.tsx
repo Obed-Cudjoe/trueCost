@@ -7,16 +7,18 @@ import { getAreas } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Area Guides",
-  description: "Browse every covered Accra area with verified price benchmarks and living realities.",
+  description: "Browse Accra area guides with date-stamped rent ranges, living notes, and data limitations.",
+  alternates: { canonical: "/areas" },
 };
 
 export default function AreasIndex() {
+  const areas = getAreas();
   return (
     <>
       <Breadcrumbs trail={[{ label: "Home", href: "/" }, { label: "Areas" }]} />
-      <h1 className="font-display text-4xl text-ink">Every covered area, honestly priced.</h1>
-      <p className="mt-2 max-w-2xl text-slate-600">Pick one to see benchmarks, living realities, and FAQs — all verified and date-stamped.</p>
-      <AreaFilter areas={getAreas()} />
+      <h1 className="font-display text-4xl text-ink">Every covered area, honestly labelled.</h1>
+      <p className="mt-2 max-w-2xl text-slate-600">Pick one to see recorded monthly ranges, living notes, FAQs, and the source limitations that still need review.</p>
+      <AreaFilter areas={areas} />
       <NewsletterStrip />
     </>
   );

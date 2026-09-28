@@ -1,7 +1,7 @@
 ---
 title: "3-Bedroom House"
 lastVerified: "Sep 2026"
-summary: "Full family house with compound — the long-term play. Highest advances, lowest turnover, most negotiation room."
+summary: "Full family house with compound — a long-term decision that needs careful inspection, written terms, and independent checks."
 layout:
   - "Three bedrooms + hall + kitchen + 2+ baths"
   - "Private compound, often with parking"
@@ -12,13 +12,13 @@ priceByArea:
   - { area: "Dansoman", range: "GH₵4,500–9,000" }
   - { area: "Haatso", range: "GH₵6,000–11,000" }
   - { area: "East Legon (gated)", range: "GH₵9,000–20,000" }
-warning: "3-bedroom advances routinely hit GH₵100,000+. Never transfer without a lawyer-reviewed agreement and verified ownership."
+warning: "For a large advance, do not transfer money without an agreement, independent property checks, and qualified legal advice. The repository has no source-backed advance distribution for this guide."
 faqs:
-  - { q: "How negotiable?", a: "Very — the buyer pool is small. 1-year advances and price cuts are winnable." }
+  - { q: "How negotiable?", a: "The repository has no source-backed negotiation rate. Ask for the requested amount, tenancy length, and terms in writing." }
   - { q: "Who handles maintenance?", a: "Must be in the agreement: roof, plumbing, borehole, gate. Assume nothing." }
   - { q: "Boys' quarters included?", a: "Sometimes occupied by others. Clarify exactly what your rent covers." }
 ---
 
-A 3-bedroom is a commitment, not a rental — inspect like a buyer, document like a lawyer, and negotiate like the scarce tenant you are.
+A 3-bedroom can involve substantial commitments. Inspect carefully, record the agreed terms, and seek qualified advice where the agreement or payment is unclear.
 
-> For sums this large, a one-hour lawyer review is the cheapest insurance in Ghana.
+> For a substantial payment or complex agreement, consider qualified legal advice before signing or transferring money.

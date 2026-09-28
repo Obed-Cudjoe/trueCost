@@ -2,9 +2,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { getLegal } from "@/lib/content";
+import { formatDate, getLegal } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Privacy Policy", description: "TrueCost privacy policy in plain words." };
+export const metadata: Metadata = { title: "Privacy Policy", description: "TrueCost privacy policy in plain words.", alternates: { canonical: "/privacy" } };
 
 export default function Privacy() {
   const doc = getLegal("privacy");

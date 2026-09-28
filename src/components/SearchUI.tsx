@@ -5,15 +5,15 @@ import Link from "next/link";
 import type { SearchEntry } from "@/lib/content";
 
 export default function SearchUI({ index, initial }: { index: SearchEntry[]; initial: string }) {
-  const [q, setQ] = useState(initial);
+  const [q, setQ] = useState(initial.slice(0, 120));
   const fuse = useMemo(() => new Fuse(index, { keys: ["title", "excerpt"], threshold: 0.35 }), [index]);
-  const results = q.trim() ? fuse.search(q.trim()).slice(0, 12).map((r) => r.item) : [];
+  const results = q.trim() ? fuse.search(q.trim().slice(0, 120)).slice(0, 12).map((r) => r.item) : [];
 
   return (
     <div>
       <form role="search" onSubmit={(e) => e.preventDefault()} className="flex max-w-xl gap-2">
         <label htmlFor="q" className="sr-only">Search</label>
-        <input id="q" value={q} onChange={(e) => setQ(e.target.value)} autoFocus
+        <input id="q" maxLength={120} value={q} onChange={(e) => setQ(e.target.value.slice(0, 120))} autoFocus
           placeholder="Areas, guides, news, rights…"
           className="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-3 focus:border-gold-deep focus:outline-none" />
       </form>
@@ -24,7 +24,7 @@ export default function SearchUI({ index, initial }: { index: SearchEntry[]; ini
       ) : results.length === 0 ? (
         <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6">
           <h2 className="text-lg font-bold text-ink">No matches for “{q}”</h2>
-          <p className="mt-1 text-sm text-slate-600">Try an area name — or <Link href="/contact" className="font-semibold text-gold-deep underline">request it</Link> and we'll verify it next.</p>
+          <p className="mt-1 text-sm text-slate-600">Try an area name — or <Link href="/contact" className="font-semibold text-gold-deep underline">request an owner review</Link>.</p>
         </div>
       ) : (
         <ul className="mt-6 space-y-3">

@@ -4,10 +4,10 @@ tagline: "Central, lively, pricey — and ageing"
 lastVerified: "Sep 2026"
 summary: "Oxford Street energy, walkable everything, and some of Accra's oldest rental stock. You pay for centrality, not newness."
 prices:
-  - { type: "Single room self-contain", min: 1000, max: 1800, advance: "1–2 yrs" }
-  - { type: "Chamber & hall s/c", min: 1800, max: 3500, advance: "1–2 yrs" }
-  - { type: "2-bedroom apartment", min: 4000, max: 9000, advance: "1–2 yrs" }
-  - { type: "2-bedroom house", min: 8000, max: 16000, advance: "1–2 yrs" }
+  - { type: "Single room self-contain", min: 1000, max: 1800, advance: "Not source-documented" }
+  - { type: "Chamber & hall s/c", min: 1800, max: 3500, advance: "Not source-documented" }
+  - { type: "2-bedroom apartment", min: 4000, max: 9000, advance: "Not source-documented" }
+  - { type: "2-bedroom house", min: 8000, max: 16000, advance: "Not source-documented" }
 realities:
   - { icon: "water", title: "Water", text: "Old plumbing in family houses; newer blocks are fine. Ask tenants, not agents." }
   - { icon: "power", title: "Power", text: "Stable grid; shared-meter disputes are the main headache." }
